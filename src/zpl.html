@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador ZPL</title>
+    <link rel="shortcut icon" href="../resources/alien.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/globals.css">
+    <link rel="stylesheet" href="./styles/zpl.module.css">
+</head>
+<body id="root">
+    <main class="mainContainer">
+        <nav class="nav">
+            <div class="navItem" id="index">Inicio</div>
+        </nav>
+        <section id="zpl">
+
+            <div id="inputContainer" class="container">
+                <div class="containerOptions">
+                    <div class="option" id="zpl">ZPL</div>
+                </div>
+                <div class="containerBox">
+                    <textarea class="textarea" placeholder="Coloca aqui tu ZPL..."></textarea>
+                </div>
+                
+            </div>
+
+            <div id="outputContainer" class="container">
+                <div class="containerOptions">
+                    <div>Resultado</div>
+                    <div class="clipboard">
+                        <img src="../resources/copy.svg" class="clipboardImage">
+                    </div>
+                </div>
+                <div class="containerBox">
+
+                    <textarea class="textarea"></textarea>
+                </div>
+
+            </div>
+            
+        </section>
+        
+
+    </main>
+
+    <script src="./js/zpl.js"></script>
+</body>
+</html>

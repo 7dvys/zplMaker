@@ -14,11 +14,16 @@ for (const item of navItems) {
 const inputContainer = document.getElementById('inputContainer');
 const outputContainer = document.getElementById('outputContainer');
 
+const inputContainerOptions = inputContainer.getElementsByClassName('containerOptions')[0];
+const outputContainerOptions = outputContainer.getElementsByClassName('containerOptions')[0];
+
 const inputContainerBox = inputContainer.getElementsByClassName('containerBox')[0];
 const inputContainerBoxTextarea = inputContainerBox.getElementsByTagName('textarea')[0];
 
 const outputContainerBox = outputContainer.getElementsByClassName('containerBox')[0];
 const outputContainerBoxTextarea = outputContainerBox.getElementsByTagName('textarea')[0];
+
+// Input Functions
 
 const formatedZpl = (zpl)=>{
     const formatedZpl = zpl.split('^XA').map((row,index)=>{
@@ -33,7 +38,19 @@ inputContainerBoxTextarea.addEventListener('keyup',()=>{
     outputContainerBoxTextarea.value = formatedZpl(inputContainerBoxTextarea.value)
 })
 
-    
+// Output Functions
+
+const clipboard = outputContainerOptions.getElementsByClassName('clipboard')[0];
+
+clipboard.addEventListener('click',()=>{
+    navigator.clipboard.writeText(
+        outputContainerBoxTextarea.value
+    )
+
+    // Alert the copied text
+    alert("Nuevo Zpl Copiado!");
+})
+
 
 
 

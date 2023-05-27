@@ -4,30 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador ZPL</title>
+    <title>Etiquetas</title>
     <link rel="shortcut icon" href="../resources/alien.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/globals.css">
     <link rel="stylesheet" href="./styles/toolCommon.module.css">
+    <link rel="stylesheet" href="./styles/etiquetas.module.css">
 </head>
 <body id="root">
     <main class="mainContainer">
         <nav class="nav">
             <div class="navItem" id="index">Inicio</div>
         </nav>
-        <section class="toolSection" id="zpl">
+
+        <section class="toolSection" id="etiquetas">
 
             <div id="inputContainer" class="container">
                 <div class="containerOptions">
-                    <div class="option" id="zpl">ZPL</div>
-                    <div class="option" id="size">
-                        <select name="size">
-                            <option value="grande">flex</option>
-                            <option value="grande">full</option>
-                        </select>
-                    </div>
+                    <div class="option" id="etiquetas">Etiquetas</div>
+                    <div class="option" id="adder">+</div>
                 </div>
                 <div class="containerBox">
-                    <textarea class="textarea" placeholder="Coloca aqui tu ZPL..."></textarea>
+
                 </div>
                 
             </div>
@@ -40,7 +37,6 @@
                     </div>
                 </div>
                 <div class="containerBox">
-
                     <textarea class="textarea" disabled></textarea>
                 </div>
 
@@ -51,6 +47,6 @@
 
     </main>
 
-    <script src="./js/zpl.js"></script>
+    <script src="./js/etiquetas.js"></script>
 </body>
 </html>

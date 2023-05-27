@@ -1,5 +1,4 @@
 // NAV
-
 const nav = document.getElementsByTagName('nav')[0];
 const navItems = nav.getElementsByClassName('navItem');
 
@@ -11,10 +10,10 @@ for (const item of navItems) {
     item.addEventListener('click',()=>{link(item.id)})
 }
 
-const inputContainer = document.getElementById('inputContainer');
-const outputContainer = document.getElementById('outputContainer');
+// const inputContainer = document.getElementById('inputContainer');
+// const outputContainer = document.getElementById('outputContainer');
 
-const inputContainerOptions = inputContainer.getElementsByClassName('containerOptions')[0];
+// const inputContainerOptions = inputContainer.getElementsByClassName('containerOptions')[0];
 const outputContainerOptions = outputContainer.getElementsByClassName('containerOptions')[0];
 
 const inputContainerBox = inputContainer.getElementsByClassName('containerBox')[0];
@@ -34,13 +33,12 @@ const formatedZpl = (zpl)=>{
 }
 
 inputContainerBoxTextarea.addEventListener('keyup',()=>{
-    console.log('algo')
     outputContainerBoxTextarea.value = formatedZpl(inputContainerBoxTextarea.value)
 })
 
 // Output Functions
 
-const clipboard = outputContainerOptions.getElementsByClassName('clipboard')[0];
+const clipboard = document.getElementById('clipboard');
 
 clipboard.addEventListener('click',()=>{
     navigator.clipboard.writeText(
@@ -50,8 +48,3 @@ clipboard.addEventListener('click',()=>{
     // Alert the copied text
     alert("Nuevo Zpl Copiado!");
 })
-
-
-
-
-

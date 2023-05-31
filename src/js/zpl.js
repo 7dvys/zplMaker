@@ -1,3 +1,7 @@
+// configs
+const host = 'http://localhost:3000';
+const printer = 'ws408';
+
 // NAV
 const nav = document.getElementsByTagName('nav')[0];
 const navItems = nav.getElementsByClassName('navItem');
@@ -48,13 +52,35 @@ inputContainerOptionsSelect.addEventListener('change',()=>{
 
 // Output Functions
 
-const clipboard = document.getElementById('clipboard');
+// const clipboard = document.getElementById('clipboard');
 
-clipboard.addEventListener('click',()=>{
-    navigator.clipboard.writeText(
-        outputContainerBoxTextarea.value
-    )
+// clipboard.addEventListener('click',()=>{
+//     navigator.clipboard.writeText(
+//         outputContainerBoxTextarea.value
+//     )
 
-    // Alert the copied text
-    alert("Nuevo Zpl Copiado!");
+//     // Alert the copied text
+//     alert("Nuevo Zpl Copiado!");
+// })
+
+const print = document.getElementById('print');
+
+print.addEventListener('click',()=>{
+    if(outputContainerBoxTextarea.value != ''){
+        alert("Imprimiendo");
+        const data = {zpl:outputContainerBoxTextarea.value,printer:printer}
+        console.log(JSON.stringify(data))
+        const config = {
+            method:"POST",
+            body:JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+              }
+        }
+        fetch(`${host}/printer`,config).then(()=>{
+            outputContainerBoxTextarea.value = '';
+            alert("Impresion finalizada");
+        })
+    }
 })

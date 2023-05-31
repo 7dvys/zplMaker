@@ -40,6 +40,7 @@ const print = document.getElementById('print');
 
 print.addEventListener('click',()=>{
     if(outputContainerBoxTextarea.value != ''){
+        alert("Imprimiendo");
         const data = {zpl:outputContainerBoxTextarea.value,printer:printer}
         console.log(JSON.stringify(data))
         const config = {
@@ -52,6 +53,7 @@ print.addEventListener('click',()=>{
         }
         fetch(`${host}/printer`,config).then(()=>{
             outputContainerBoxTextarea.value = '';
+            alert("Impresion finalizada");
         })
     }
 })

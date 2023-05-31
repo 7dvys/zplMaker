@@ -25,7 +25,7 @@ const outputContainerBox = outputContainer.getElementsByClassName('containerBox'
 const outputContainerBoxTextarea = outputContainerBox.getElementsByTagName('textarea')[0];
 
 // Input Functions
-const format = {full:"^XA\n^MD10\n^PR4\n^MTD\n^LH0,0\n^PW720\n^LL240\n",flex:"flex Format..."};
+const format = {full:"^XA^MD10^PR4^MTD^LH0,0^PW720^LL240",flex:"flex Format..."};
 
 const formatedZpl = (zpl)=>{
     const formatedZpl = zpl.split('^XA').map((row,index)=>{

@@ -69,16 +69,16 @@
 
 }
 
-.clipboard{
+.optionImage{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.clipboard:hover{
+.optionImage:hover{
     cursor: pointer;
 }
 
-.clipboardImage{
+.optionImage>img{
     height: 1.1rem;
 }

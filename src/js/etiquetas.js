@@ -1,3 +1,7 @@
+// configs
+const host = 'http://localhost:3000';
+const printer = 'ws408';
+
 // NAV
 const nav = document.getElementsByTagName('nav')[0];
 const navItems = nav.getElementsByClassName('navItem');
@@ -23,13 +27,33 @@ const outputContainerBox = outputContainer.getElementsByClassName('containerBox'
 const outputContainerBoxTextarea = outputContainerBox.getElementsByTagName('textarea')[0];
 
 // Output Clipboard Function
-const clipboard = document.getElementById('clipboard');
+// const clipboard = document.getElementById('clipboard');
 
-clipboard.addEventListener('click',()=>{
-    navigator.clipboard.writeText(
-        outputContainerBoxTextarea.value
-    )
-    alert("Nuevo Zpl Copiado!");
+// clipboard.addEventListener('click',()=>{
+//     navigator.clipboard.writeText(
+//         outputContainerBoxTextarea.value
+//     )
+//     alert("Nuevo Zpl Copiado!");
+// })
+
+const print = document.getElementById('print');
+
+print.addEventListener('click',()=>{
+    if(outputContainerBoxTextarea.value != ''){
+        const data = {zpl:outputContainerBoxTextarea.value,printer:printer}
+        console.log(JSON.stringify(data))
+        const config = {
+            method:"POST",
+            body:JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+              }
+        }
+        fetch(`${host}/printer`,config).then(()=>{
+            outputContainerBoxTextarea.value = '';
+        })
+    }
 })
 
 // Input add Function
@@ -150,19 +174,19 @@ class LabelController{
         let zplCode = "";
         for(const [codigo,titulo] of formatLabelList){
             if(!n){
-                zplCode+="^XA\n^MD10\n^PR4\n^MTD\n^LH0,0\n^PW720\n^LL240\n"
-                +`^FO-50,40^A0N,20,20^FD${titulo}^FS\n`
-                +`^FO-50,70^BY2^BCN,120,Y,N,N^FD${codigo}^FS \n`
+                zplCode+="^XA^MU203^MD10^MTD^LH0,0^PW799^LL240"
+                +`^FO10,40^A0N,20,20^FD${titulo}^FS`
+                +`^FO10,70^BY2^BCN,120,Y,N,N^FD${codigo}^FS`
                 n++;
             }else{
-                zplCode+=`^FO440,40^A0N,20,20^FD${titulo}^FS\n`
-                +`^FO440,70^BY2^BCN,120,Y,N,N^FD${codigo}^FS \n`
-                +"^XZ \n"
+                zplCode+=`^FO440,40^A0N,20,20^FD${titulo}^FS`
+                +`^FO440,70^BY2^BCN,120,Y,N,N^FD${codigo}^FS`
+                +"^XZ"
                 n--;
             }
         }
         if(n){
-            zplCode +="^XZ \n"
+            zplCode +="^XZ"
         }
 
         this.sendToOutput(zplCode);

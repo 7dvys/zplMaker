@@ -54,3 +54,15 @@ body{
 .nav>.navItem:hover{
     cursor: pointer;
 }
+
+select{
+  background-color: transparent;
+  border: 1px solid rgba(0,0,0,0.2);
+  font-size: 1rem;
+}
+
+input{
+  background-color: transparent;
+  border: 1px solid rgba(0,0,0,0.2);
+  font-size: 1rem;
+}
